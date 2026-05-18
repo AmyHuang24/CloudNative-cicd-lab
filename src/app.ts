@@ -19,7 +19,7 @@ export function buildApp(options: FastifyServerOptions = {}) {
     };
   });
 
-  const badlyFormatted={studentId:"R14922174"};
+  const badlyFormatted = { studentId: 'R14922174' };
 
   return app;
 }
