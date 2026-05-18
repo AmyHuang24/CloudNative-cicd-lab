@@ -35,7 +35,14 @@ jobs:
         run: npm run typecheck
 
       - name: Prettier check
-        run: npm run format:check
+        run: >
+          npx prettier --check
+          "src/**/*.ts"
+          "test/**/*.ts"
+          "vitest.config.ts"
+          "tsconfig.json"
+          "package.json"
+          ".github/workflows/ci_R14922174.yaml"
 
       - name: Run tests with JUnit report
         run: |
@@ -43,7 +50,7 @@ jobs:
           npm test -- --reporter=default --reporter=junit --outputFile.junit=reports/vitest-junit.xml
 
       - name: Publish test report
-        if: always()
+        if: ${{ always() && hashFiles('reports/vitest-junit.xml') != '' }}
         uses: dorny/test-reporter@v1
         with:
           name: Vitest Test Results
@@ -52,7 +59,7 @@ jobs:
           fail-on-error: false
 
       - name: Upload test report artifact
-        if: always()
+        if: ${{ always() && hashFiles('reports/vitest-junit.xml') != '' }}
         uses: actions/upload-artifact@v4
         with:
           name: vitest-test-report
