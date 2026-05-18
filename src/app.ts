@@ -8,7 +8,6 @@ export function buildApp(options: FastifyServerOptions = {}) {
 
   app.get('/', async () => {
     return {
-      const badlyFormatted={studentId:"R14922174"},
       message: 'CI/CD Lab Fastify app is running',
       version: process.env.APP_VERSION || 'dev'
     };
@@ -19,6 +18,8 @@ export function buildApp(options: FastifyServerOptions = {}) {
       status: 'ok'
     };
   });
+
+  const badlyFormatted={studentId:"R14922174"};
 
   return app;
 }
