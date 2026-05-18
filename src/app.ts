@@ -8,7 +8,7 @@ export function buildApp(options: FastifyServerOptions = {}) {
 
   app.get('/', async () => {
     return {
-      const badlyFormatted={studentId:"R14922174"}; 
+      const badlyFormatted = { studentId: 'R14922174' };
       message: 'CI/CD Lab Fastify app is running',
       version: process.env.APP_VERSION || 'dev'
     };
